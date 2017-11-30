@@ -1,0 +1,207 @@
+@import (less) "../base.less";
+.postionBase {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+}
+
+.marginCenter {
+    margin: 0 auto;
+}
+
+@mainbgColor: #483C32; //主颜色背景
+@mainReverseColor: #F2F2F2; //主背景反色
+#layout {
+    .postionBase;
+}
+
+.chatWrapper {
+    .postionBase;
+}
+
+.botWrapper {
+    .postionBase;
+    .header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 3rem;
+        width: 100%;
+        line-height: 3rem;
+        color: @mainReverseColor;
+        background: @mainbgColor;
+        div {
+            width: 95%;
+            .marginCenter;
+            img {
+                width: 1.7rem;
+                vertical-align: middle;
+                margin-right: 1rem
+            }
+        }
+    }
+    .chatListWrap {
+        position: absolute;
+        width: 100%;
+        top: 3rem;
+        background: #ddd;
+        bottom: 5rem;
+        .msg {
+            margin: .5rem 1rem;
+            width: 100%;
+            &>p {
+                text-align: center;
+                color: #999;
+                font-size: .8rem;
+                line-height: 1.5rem;
+            }
+            &>div {
+                position: relative;
+                word-wrap: break-word;
+                line-height: 1.4rem;
+                padding: .5rem; //box-shadow: .1rem .1rem .1rem #666;
+                &:after {
+                    content: "";
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    border: solid .8rem transparent;
+                }
+            }
+            &.sender {
+                &>div {
+                    border-radius: .3rem 0 .3rem .3rem;
+                    background: #FE4C40;
+                    color: #eee;
+                    margin-right: 2rem;
+                    float: right;
+                    max-width: 80%;
+                    &:after {
+                        /*background: #FE4C40;
+                        right: -.4rem;
+                        top: 0;
+                        border-radius: 0 0 3rem 0; 
+                        box-shadow: .1rem .1rem .1rem #666;*/
+                        right: -.5rem;
+                        top: 0;
+                        border-top-color: #FE4C40
+                    }
+                }
+            }
+            &.recevier {
+                &>div {
+                    border-radius: 0 .3rem .3rem .3rem;
+                    background: #5d29ee;
+                    color: #eee;
+                    float: left;
+                    max-width: 80%;
+                    &:after {
+                        /*background: #5d29ee;
+                        left: -.4rem;
+                        top: 0;
+                        border-radius: 0 0 0 3rem; 
+                        box-shadow: .1rem .1rem .1rem #666;*/
+                        left: -.5rem;
+                        top: 0;
+                        border-top-color: #5d29ee
+                    }
+                }
+            }
+        }
+    }
+    .footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 5rem;
+        width: 100%;
+        border-top: solid 1px #333;
+        color: @mainReverseColor;
+        background: @mainbgColor;
+        &>div:first-child {
+            height: 2.7rem;
+            .editer {
+                margin: .5rem;
+                position: relative;
+                border-radius: 0.5rem;
+                overflow: hidden;
+                div {
+                    &:first-child {
+                        background: #F2F2F2;
+                        color: #333;
+                        margin-right: 3rem;
+                        height: 1.4rem;
+                        overflow: auto;
+                        padding: .3rem;
+                    }
+                    &:last-child {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: 3rem;
+                        height: 2rem;
+                        button {
+                            border: 0;
+                            height: 100%;
+                            width: 100%;
+                            background: #FE4C40;
+                            color: #030303
+                        }
+                    }
+                }
+            }
+            /*.editer {
+                margin: 0.3rem;
+                background: #F2F2F2;
+                height: 2.1rem;
+                margin-top: .3rem;
+                border-radius: 0.5rem;
+                border: solid 1px #333;
+                box-shadow: inset 0 0 .3rem #000;
+                position: relative;
+                overflow: hidden;
+                div {
+                    &:first-child {
+                        color: #333;
+                        padding: .4rem;
+                        outline: none;
+                        margin-right: 5rem;
+                        height: 1.3rem;
+                        overflow: auto;
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                    }
+                    &:last-child {
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                        margin: auto;
+                        width: 5rem;
+                        height: 100%;
+                        //border-left: solid 1px #666;
+                        //box-shadow: 0 0 .3rem #000;
+                        button {
+                            display: inline-block;
+                            border: 0;
+                            height: 100%;
+                            width: 5rem;
+                            background:#FE4C40;
+                            color: #030303
+                        }
+                    }
+                }
+            }*/
+        }
+        &>div:last-child {
+            height: 2.3rem;
+            background: #666;
+            text-align: center
+        }
+    }
+}

@@ -168,6 +168,3 @@ export default class Core {
     // }
 }
 
-//mount、start、update、分别都有各自的数据和数据流，mount数据流主要用于初始化(给到初始数据)，start表示第一次运行的时候做出的状态改变，update主要用于用户操作
-//是否可以扩展出多条组件组，作为一个业务组
-//view的问题，是否可以结合react来组织view层级，随着数据流动触发组件内函数

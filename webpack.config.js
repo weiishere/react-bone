@@ -8,7 +8,7 @@ const serverHost = 'localhost';
 const serverPort = '8888';
 
 module.exports = {
-    entry: __dirname + "/src/index.js",
+    entry: __dirname + "/src/app.js",
     output: {
         path: __dirname + "/dist/" + version,
         filename: "bundle.js"
@@ -26,7 +26,7 @@ module.exports = {
             test: /\.(css|less)$/i,
             use: ExtractTextPlugin.extract({
                 fallback: "style-loader",
-                use: ["css-loader?sourceMap", "less-loader?sourceMap"]
+                use: ["css-loader", "less-loader"]
             })
         }, {
             test: /\.(jpe?g|png|gif|svg)$/i,

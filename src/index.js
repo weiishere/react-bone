@@ -61,15 +61,36 @@ let ReComponent = app.setview(function (mods) {
 });
 
 
-// core.run({
-//     version: "1.1.1"
-// });
+/*
 
+let sendMes = core.task(editer, charPanel).setView(function(mods){
+    return <div><Editer/></div>
+});
+//setView则表示要
 
+sendMes.run({
+    data:{},
+    delay:500,
+    stepAfter:{
+        editer:function(data){
+            return data;
+        }
+    }
+})
 
-
+*/-
 
 render(
     <ReComponent value='22222222222222' />,
     document.getElementById('layout')
-)
+) 
+
+
+//框架主要用于解决react组件面向对象描述不强，扩展动作函数方面不是很方便，在此可以加强组件的动作化，以及多组件之间的连接和协作
+
+
+//mount、start、update、分别都有各自的数据和数据流，mount数据流主要用于初始化(给到初始数据)，start表示第一次运行的时候做出的状态改变，update主要用于用户操作
+//是否可以扩展出多条组件组，作为一个业务组
+//view的问题，是否可以结合react来组织view层级，随着数据流动触发组件内函数
+
+//暂时使用run(task)(data)这种方式柯里化，使用多条任务线的方式进行开发
