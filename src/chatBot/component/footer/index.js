@@ -1,10 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
-
+import { connect } from 'react-redux';
 
 export default class Footer {
     constructor() { }
-    setView(components) {
+    setView({ components, bot }) {
         class FooterView extends React.Component {
             constructor(props) {
                 super(props);
@@ -13,7 +13,7 @@ export default class Footer {
                 const { editer } = components;
                 return (<section className='footer'>
                     <div>
-                        {editer.view}
+                        <editer.view/>
                     </div>
                     <div>
                         功能组件区
@@ -21,7 +21,9 @@ export default class Footer {
                 </section>)
             }
         }
-        this.view = <FooterView />
+        this.view = connect((state, ownProps) => {
+            return {}
+        })(FooterView);
     }
 }
 

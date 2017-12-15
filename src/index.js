@@ -6,6 +6,7 @@ import Header from './core/defaultModule/header';
 import Footer from './core/defaultModule/footer';
 
 
+
 class ChartPanelViewChild extends React.Component {
     constructor(props) {
         super(props);

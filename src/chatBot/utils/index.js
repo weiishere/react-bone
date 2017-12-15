@@ -1,0 +1,4 @@
+import './extend'
+
+
+export default {}

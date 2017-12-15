@@ -50,8 +50,12 @@
         top: 3rem;
         background: #ddd;
         bottom: 5rem;
+        overflow: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        -webkit-transition: all 0.3s ease-out;
         .msg {
-            margin: .5rem 1rem;
+            margin: 1.5rem 1rem;
             width: 100%;
             &>p {
                 text-align: center;
@@ -64,13 +68,13 @@
                 word-wrap: break-word;
                 line-height: 1.4rem;
                 padding: .5rem; //box-shadow: .1rem .1rem .1rem #666;
-                &:after {
-                    content: "";
-                    position: absolute;
-                    width: 0;
-                    height: 0;
-                    border: solid .8rem transparent;
-                }
+                // &:after {
+                //     content: "";
+                //     position: absolute;
+                //     width: 0;
+                //     height: 0;
+                //     border: solid .8rem transparent;
+                // }
             }
             &.sender {
                 &>div {
@@ -80,16 +84,12 @@
                     margin-right: 2rem;
                     float: right;
                     max-width: 80%;
-                    &:after {
-                        /*background: #FE4C40;
-                        right: -.4rem;
-                        top: 0;
-                        border-radius: 0 0 3rem 0; 
-                        box-shadow: .1rem .1rem .1rem #666;*/
-                        right: -.5rem;
-                        top: 0;
-                        border-top-color: #FE4C40
-                    }
+                    padding-right: 1rem;
+                    -webkit-mask-box-image: url("data:image/svg+xml;charset=utf-8,<svg height='35' viewBox='0 0 96 70' width='48' xmlns='http://www.w3.org/2000/svg'><path d='m84 35c1 7-5 37-42 35-37 2-43-28-42-35-1-7 5-37 42-35 37-2 43 28 42 35z'/><path d='m96 70c-6-2-12-10-12-19v-16l-14 27s8 8 26 8z'/></svg>") 50% 56% 46% 42% // &:after {
+                    //     right: -.5rem;
+                    //     top: 0;
+                    //     border-top-color: #FE4C40
+                    // }
                 }
             }
             &.recevier {
@@ -99,18 +99,17 @@
                     color: #eee;
                     float: left;
                     max-width: 80%;
-                    &:after {
-                        /*background: #5d29ee;
-                        left: -.4rem;
-                        top: 0;
-                        border-radius: 0 0 0 3rem; 
-                        box-shadow: .1rem .1rem .1rem #666;*/
-                        left: -.5rem;
-                        top: 0;
-                        border-top-color: #5d29ee
-                    }
+                    padding-left: 1rem;
+                    -webkit-mask-box-image: url("data:image/svg+xml;charset=utf-8,<svg height='35' viewBox='0 0 96 70' width='48' xmlns='http://www.w3.org/2000/svg'><path d='m96 35c1 7-5 37-42 35-37 2-43-28-42-35-1-7 5-37 42-35 37-2 43 28 42 35z'/><path d='m0 70c6-2 12-10 12-19v-16l14 27s-8 8-26 8z'/></svg>") 50% 42% 46% 56% // &:after {
+                    //     left: -.5rem;
+                    //     top: 0;
+                    //     border-top-color: #5d29ee
+                    // }
                 }
             }
+        }
+        &.dockTopKeyboard {
+            bottom: 60%;
         }
     }
     .footer {
@@ -202,6 +201,10 @@
             height: 2.3rem;
             background: #666;
             text-align: center
+        }
+        &.dockTopKeyboard {
+            bottom: 50%;
+            /*transform: translate3d(0, -50%, 0);由于相对于自身定位，所以暂时不用*/
         }
     }
 }

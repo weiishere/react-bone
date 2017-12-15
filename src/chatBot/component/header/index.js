@@ -6,7 +6,7 @@ export default class Header {
     constructor() {
         
     }
-    setView(components) {
+    setView({ components, bot }) {
         class HeaderView extends React.Component {
             constructor(props) {
                 super(props);

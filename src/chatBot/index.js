@@ -4,12 +4,13 @@ import Recevier from "./recevier";
 import components from './component';
 import React from 'react';
 import { render } from 'react-dom';
-import MsgRenderManager from './msgRender';
+import msgRenderManager from './msgRender';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import immutable from 'immutable';
 import reducers from './reducers';
 import { connect } from 'react-redux';
+import utils from './utils/extend';
 
 export default (function () {
     let option = {};
@@ -26,8 +27,8 @@ export default (function () {
                 throw new Error("ChatBot's object without the property 'wrapper'")
             }
             this.chatWrapper = document.querySelector(wrapper);
-            this.components = components;
-            this.msgRender = new MsgRenderManager();
+            this.components = components(this);
+            this.msgRender = msgRenderManager;
             option = $.extend(true, {
                 websocket: {
                     autoStart: true,
@@ -60,7 +61,7 @@ export default (function () {
                     });
                 }
             }
-
+            this.messageList = [];
         }
         initSocket() {
             return new Promise((resolve, reject) => {
@@ -82,16 +83,20 @@ export default (function () {
             });
         }
         setView() {
-            const { chatPanel } = components;
+            let self = this;
+            const { chatPanel } = this.components;
             class Container extends React.Component {
-                constructor(props) { super(props); }
+                constructor(props) {
+                    super(props);
+                    self.dispatch = props.dispatch;
+                }
                 render() {
                     return (<div className='botWrapper'><chatPanel.view /></div>)
                 }
             }
             const _container = connect((state, ownProps) => {
-                const msgList = state.get('data');
-                return {}
+                const messageList = state.get('messageList').get("data").messageList;
+                return {messageList}
             })(Container);
             render(<SetReduxRoot reducers={reducers} container={<_container />} />, this.chatWrapper);
         }
@@ -100,10 +105,9 @@ export default (function () {
             mods.forEach((item) => {
                 let _name = item.Class.name;
                 _name = _name.replace(/\b(\w)|\s(\w)/g, (m) => { return m.toLowerCase() });
-                self[_name] = new item.Class(item.config);
+                self[_name] = new item.Class(Object.assign({ bot: self }, item.config));
                 this[_name]['formatMes'] = function (getMsg) {
                     this.formatMesHandler = getMsg.bind(self);
-                    this.getSocket = function () { return self.socket; }
                 }
             });
         }

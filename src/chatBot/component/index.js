@@ -18,19 +18,19 @@ import ChatPanel from './chatPanel';
 //     component.setView(result);
 // })
 
-
-let result = {
-    header: new Header(),
-    footer: new Footer(),
-    editer: new Editer(),
-    chatPanel: new ChatPanel()
-}
-Object.keys(result).forEach((item) => {
-    let component = result[item];
-    component['override'] = function (getView) {
-        this.view = getView.call(this, result);
+export default (bot) => {
+    let components = {
+        header: new Header(),
+        footer: new Footer(),
+        editer: new Editer(),
+        chatPanel: new ChatPanel()
     }
-    component.setView(result);
-});
-
-export default result;
+    Object.keys(components).forEach((item) => {
+        let component = components[item];
+        component['override'] = function (getView) {
+            this.view = getView.call(this, components);
+        }
+        component.setView({ components, bot });
+    });
+    return components;
+};

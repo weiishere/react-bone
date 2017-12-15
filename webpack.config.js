@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const version = '20171102';
-const serverHost = 'localhost';
+const serverHost = '192.168.191.1';
 const serverPort = '8888';
 
 module.exports = {
@@ -51,7 +51,13 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: __dirname + '/src/index.html'
+            template: __dirname + '/src/index.html',
+            showErrors:true
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'template.html',
+            template: __dirname + '/src/template.html',
+            inject:false
         }),
         new ExtractTextPlugin({
             filename: version + '/css/app.css',

@@ -161,19 +161,17 @@ chatBot.operate.init().then(() => {
 
     return chatBot.operate.run();
 }).then(() => {
-    let mes = chatBot.sender.pushMes({
-        postion: 'after',//显示位置：before、messageId,
-        delay: 2000,//延时多少时间渲染
-        timeline: 1000,//设置时间间隔，跟上一条消息的间隔，超过间隔则显示时间
-        sendBefore: function () { },
-        sendAfter: function () { },
-        renderBefore: function () { },
-        renderAfter: function () { }
-    });
-
-
-
-
+    // let mes = chatBot.sender.pushMes({
+    //     render: chatBot.msgRender.textRender,//指定消息渲染器
+    //     content: 'content',
+    //     postion: 'after',//显示位置：before、messageId,
+    //     delay: 2000,//延时多少时间渲染
+    //     timeline: 1000,//设置时间间隔，跟上一条消息的间隔，超过间隔则显示时间
+    //     sendBefore: function () { },
+    //     sendAfter: function () { },
+    //     renderBefore: function () { },
+    //     renderAfter: function () { }
+    // });
 }, (error) => {
     alert(error);
 });

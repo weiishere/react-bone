@@ -3,26 +3,34 @@ import React from 'react';
 import { render } from 'react-dom';
 
 export default class TextRender {
-    constructor(content) {
-
+    constructor(msgObj) {
+        this.msgObj = msgObj;
+        //this.render(msgObj.content);
     }
     render(content) {
+        const self = this;
         class TextMegView extends React.Component {
             constructor(props) {
                 super(props);
                 this.state = {
-                    content: this.props.content
+                    content: self.msgObj.content,
+                    timeStr: self.msgObj.isShowTime ? self.msgObj.timeStr : ''
                 }
             }
+            // shouldComponentUpdate(nextProps) {
+            //     return nextProps.html !== this.getDOMNode().innerHTML;
+            // }
             render() {
+
                 return (
                     <div className='msg clearfix sender'>
-                        <p>2017-11-28 11:24:46</p>
+                        <p>{this.state.timeStr}</p>
                         <span></span>
-                        <div>{this.state}</div>
+                        <div dangerouslySetInnerHTML={{ __html: this.state.content }} />
                     </div>
                 )
             }
         }
+        return TextMegView;
     }
 }
